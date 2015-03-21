@@ -18,7 +18,7 @@
 #define ARDIM2 4
 
 
-void print_array(int ar_dim1, int ar_dim2, int ar[ARDIM1][ARDIM2]) {
+void print_array(int ar_dim1, int ar_dim2, int *ar[ARDIM1]) {
   printf("---------------\n");
   for (int i = 0; i < ar_dim1; i++) {
     for (int j = 0; j < ar_dim2; j++) {
@@ -33,21 +33,17 @@ int main() {
   srand(time(NULL));
 
   // make a 2-D array
-  int ar1[ARDIM1][ARDIM2] = 
-  { { 0, 1, 2, 3 },
-    { 4, 5, 6 ,7 } };
+  int art1[ARDIM2] = {0, 1, 2, 3};
+  int art2[ARDIM2] = {4, 5, 6, 7};
+  int *ar1[ARDIM1] = {art1, art2};
 
   print_array(ARDIM1, ARDIM2, ar1);
 
-  for (int i = 0; i < LIMITHIGH; i++) {
-    int ar2[ARDIM2];
-    for (int j = 0; j < ARDIM2; j++) {
-      ar1[1][j] = rand() % 89 + 10;
-    }
-   // int ar3[ARDIM2] = { 10, 11, 12, 13 };
-   // *ar1[1] = *ar3;
-    print_array(ARDIM1, ARDIM2, ar1);
-  }
+  int ar3[ARDIM2] = { 10, 11, 12, 13 };
+   
+  ar1[1] = ar3;
+    
+  print_array(ARDIM1, ARDIM2, ar1);
 
   return 0;
 }
